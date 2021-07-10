@@ -8,43 +8,43 @@ const Character = db.define("character", {
         unique: true,
     },
     race: {
-        type: DataTypes.ENUM,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     alignment: {
-        type: DataTypes.ENUM,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     gender: {
-        type: DataTypes.ENUM,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     height_ft: {
-        type: DataTypes.ENUM,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     height_in: {
-        type: DataTypes.ENUM,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     weight: {
-        type: DataTypes.ENUM,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
-    class: {
-        type: DataTypes.ENUM,
+    char_class: {
+        type: DataTypes.STRING,
         allowNull: false,
     },
     background: {
-        type: DataTypes.ENUM,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     level: {
-        type: DataTypes.ENUM,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     experience: {
-        type: DataTypes.ENUM,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     user_id: {
