@@ -91,30 +91,51 @@ router.put("/update/:id", async(req, res) => {
 });
 
 
-/* 
+/*
 =======================================
-    View Character
+    View Characters
 =======================================
+*/
+router.get("/mine", async (req, res) => {
+    const { user_id } = req.user;
+    try {
+        const userCharacters = await CharacterModel.findAll({
+            where: {
+                owner: user_id
+            }
+        });
+        res.status(200).json(userCharacters);
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
 
-
-
-
-
-
-
-
-
+/*
 =======================================
     Delete Character
 =======================================
-
-
-
-
-
-
-
 */
+router.delete("/delete/:id", validateJWT, async (req, res) => {
+    const ownerId = req.user.id;
+    const characterId = req.params.id;
+
+    try {
+        const query = {
+            where: {
+                id: characterId,
+                owner: ownerId
+            }
+        };
+
+        await CharacterModel.destroy(query);
+        res.status(200).json({ message: "Character Deleted" });
+    } catch (err) {
+        res.status(500).json({ error: err });
+    }
+});
+
+
+
 
 
 module.exports = router;
