@@ -10,6 +10,10 @@ app.use(Express.json());
 
 // app.use("/user", controllers.userController);
 
+app.use("/test", (req, res) => {
+    res.send('This is a test message')
+});
+
 app.use("/character", controllers.characterController);
 
 dbConnection.authenticate()
