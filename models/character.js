@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
-
 const Character = db.define("character", {
     name: {
         type: DataTypes.STRING,
@@ -52,6 +51,4 @@ const Character = db.define("character", {
         allowNull: false,
     },
 });
-
-
 module.exports = Character;
