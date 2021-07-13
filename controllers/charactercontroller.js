@@ -58,13 +58,13 @@ router.put("/update/:id", async(req, res) => {
         level,
         experience
     } = req.body.Character;
-    // const ownerId = req.user.id;
+    const ownerId = req.user.id;
     const charId = req.params.id;
 
     const query = {
         where: {
             id: charId,
-            // user_id: ownerId,
+            user_id: ownerId,
         }
     };
     const updatedChar = {
@@ -101,7 +101,7 @@ router.get("/mine", async (req, res) => {
     try {
         const userCharacters = await CharacterModel.findAll({
             where: {
-                user_id: 1
+                user_id: ownerId
             }
         });
         res.status(200).json(userCharacters);
@@ -123,7 +123,7 @@ router.delete("/delete/:id", async (req, res) => {
         const query = {
             where: {
                 id: characterId,
-                // owner: ownerId
+                user_id: ownerId
             }
         };
 
