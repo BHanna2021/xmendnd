@@ -97,7 +97,7 @@ router.put("/update/:id", async(req, res) => {
 =======================================
 */
 router.get("/mine", async (req, res) => {
-    const { user_id } = req.user;
+    // const { user_id } = req.user;
     try {
         const userCharacters = await CharacterModel.findAll({
             where: {
