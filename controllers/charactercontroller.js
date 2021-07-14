@@ -20,7 +20,7 @@ router.post("/create", async(req, res) => {
         level,
         experience
     } = req.body.Character;
-    // const { id } = req.user;
+    const { id } = req.user
     const characterEntry = {
         name,
         race,
@@ -33,7 +33,7 @@ router.post("/create", async(req, res) => {
         background,
         level,
         experience,
-        user_id: 1
+        user_id: id
     };
 
     try {
@@ -97,11 +97,11 @@ router.put("/update/:id", async(req, res) => {
 =======================================
 */
 router.get("/mine", async (req, res) => {
-    const { user_id } = req.user;
+    const { id } = req.user;
     try {
         const userCharacters = await CharacterModel.findAll({
             where: {
-                user_id: ownerId
+                user_id: id
             }
         });
         res.status(200).json(userCharacters);
@@ -116,7 +116,7 @@ router.get("/mine", async (req, res) => {
 =======================================
 */
 router.delete("/delete/:id", async (req, res) => {
-    // const ownerId = req.user.id;
+    const ownerId = req.user.id;
     const characterId = req.params.id;
 
     try {
