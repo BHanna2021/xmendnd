@@ -112,6 +112,23 @@ router.get("/mine", async (req, res) => {
 
 /*
 =======================================
+    View Character by Id
+=======================================
+*/
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const results = await CharacterModel.findAll({
+            where: { id: owner_id }
+        });
+        res.status(200).json(results);
+    }catch (err) {
+        res.status(500).json({ error:err });
+    }
+});
+
+/*
+=======================================
     Delete Character
 =======================================
 */
