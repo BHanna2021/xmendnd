@@ -116,10 +116,15 @@ router.get("/mine", async (req, res) => {
 =======================================
 */
 router.get("/:id", async (req, res) => {
-    const { id } = req.params;
+    const ownerId = req.user.id;
+    const characterId = req.params.id;
+
     try {
-        const results = await CharacterModel.findAll({
-            where: { id: owner_id }
+        const results = await CharacterModel.findOne({
+            where: {
+                id: characterId,
+                user_id: ownerId
+            }
         });
         res.status(200).json(results);
     }catch (err) {
