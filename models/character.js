@@ -4,7 +4,6 @@ const Character = db.define("character", {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
     race: {
         type: DataTypes.STRING,
