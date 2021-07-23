@@ -3,6 +3,7 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 
+app.use(cors());
 app.use(require('./middleware/headers'));
 
 const controllers = require("./controllers");
