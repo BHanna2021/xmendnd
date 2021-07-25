@@ -66,18 +66,20 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.get("/handle", async (req, res) => {
-    const { id } = req.user;
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
 
     try {
         const userInfo = await UserModel.findOne({
             where: {
-                user_id: id
+                id: id,
             }
         });
+        console.log(userInfo)
         res.status(200).json(userInfo);
     } catch (error) {
-        res.status(500).json(error)
+        // res.status(500).json(error)
     }
 })
 
