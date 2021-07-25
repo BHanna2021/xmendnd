@@ -68,7 +68,6 @@ router.post("/login", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
-    console.log(id);
 
     try {
         const userInfo = await UserModel.findOne({
@@ -76,10 +75,10 @@ router.get("/:id", async (req, res) => {
                 id: id,
             }
         });
-        console.log(userInfo)
+        // console.log(userInfo)
         res.status(200).json(userInfo);
     } catch (error) {
-        // res.status(500).json(error)
+        res.status(500).json(error)
     }
 })
 
