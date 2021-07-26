@@ -65,4 +65,20 @@ router.post("/login", async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const userInfo = await UserModel.findOne({
+            where: {
+                id: id,
+            }
+        });
+        // console.log(userInfo)
+        res.status(200).json(userInfo);
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router;
