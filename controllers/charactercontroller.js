@@ -18,7 +18,10 @@ router.post("/create", async(req, res) => {
         char_class,
         background,
         level,
-        experience
+        experience,
+        hit_points,
+        language,
+        session_notes
     } = req.body.Character;
     const { id } = req.user
     const characterEntry = {
@@ -33,6 +36,9 @@ router.post("/create", async(req, res) => {
         background,
         level,
         experience,
+        hit_points,
+        language,
+        session_notes,
         user_id: id
     };
 
@@ -56,7 +62,10 @@ router.put("/update/:id", async(req, res) => {
         char_class,
         background,
         level,
-        experience
+        experience,
+        hit_points,
+        language,
+        session_notes,
     } = req.body.Character;
     const ownerId = req.user.id;
     const charId = req.params.id;
@@ -79,6 +88,9 @@ router.put("/update/:id", async(req, res) => {
         background: background,
         level: level,
         experience: experience,
+        hit_points: hit_points,
+        language: language,
+        session_notes: session_notes,
     };
     try {
         const update = await CharacterModel.update(updatedChar, query);
