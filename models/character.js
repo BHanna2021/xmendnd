@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../db");
 const Character = db.define("character", {
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false,
     },
     race: {
@@ -44,6 +44,18 @@ const Character = db.define("character", {
     experience: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    hit_points: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    language: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    session_notes: {
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     user_id: {
         type: DataTypes.INTEGER,
