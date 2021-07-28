@@ -3,7 +3,6 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 
-// app.use(cors());
 app.use(require('./middleware/headers'));
 
 const controllers = require("./controllers");
@@ -12,9 +11,6 @@ app.use(Express.json());
 
 app.use("/user", controllers.userController);
 
-app.use("/test", (req, res) => {
-    res.send('This is a test message')
-});
 app.use(require("./middleware/validate-user"));
 
 app.use("/character", controllers.characterController);
