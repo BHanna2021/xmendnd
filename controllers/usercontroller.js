@@ -74,7 +74,6 @@ router.get("/:id", async (req, res) => {
                 id: id,
             }
         });
-        // console.log(userInfo)
         res.status(200).json(userInfo);
     } catch (error) {
         res.status(500).json(error)
